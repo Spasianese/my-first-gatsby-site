@@ -33,4 +33,4 @@ jobs:
           ssh-private-key: ${{ secrets.PRIVATE_KEY }}
 
       - name: upload via rsync
-        run: rsync -avz --delete ./public/ ${{ secrets.HOST }}
+        run: rsync -avh ./public/. ${{ secrets.HOST }}
