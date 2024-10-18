@@ -3,7 +3,7 @@
  */
 module.exports = {
   siteMetadata: {
-    title: "uh oh",
+    title: "What?",
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [

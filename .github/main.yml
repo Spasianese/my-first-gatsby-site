@@ -1,0 +1,36 @@
+name: blog
+on:
+  push:
+    branches: main
+jobs:
+  build-and-deploy:
+    name: Build and deploy Gatsby site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2.3.1
+
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '13.x'
+
+      - name: Install Project Dependencies
+        run: npm install
+
+      - name: Install Gatsby CLI
+        run: npm install -g gatsby-cli@2.12.34
+
+      - name: Build
+        run: gatsby build --prefix-paths
+
+      - name: Verify build
+        run: ls -la public
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: upload via rsync
+        run: rsync -avz --delete ./public/ ${{ secrets.HOST }}
