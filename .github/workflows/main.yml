@@ -28,7 +28,7 @@ jobs:
       
       - name: Verify build
         run: ls -la public
-
+      
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh/
