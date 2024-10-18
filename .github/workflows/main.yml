@@ -30,10 +30,12 @@ jobs:
       - name: Verify build
         run: ls -la public
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.PRIVATE_KEY }}
-
-      - name: upload via rsync
-        run: rsync -avh ./public/. ${{ secrets.HOST }}
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          sudo chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "${{ secrets.HOST }}" > ~/.ssh/known_hosts
+      
+      - name: SFTP upload
+        run: sftp -i ~/.ssh/deploy_key ${{ secrets.USER }}@${{ secrets.HOST }} <<< $'cd ${{ secrets.PATH }} \n put -r public/*'
