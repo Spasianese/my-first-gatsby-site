@@ -32,10 +32,11 @@ jobs:
 
       - name: Copy files via SCP
         uses: appleboy/scp-action@master
+        env:
+          host: ${{ secrets.HOST }}         
+          username: ${{ secrets.USER }}     
+          key: ${{ secrets.PRIVATE_KEY }}   
         with:
-          host: ${{ secrets.HOST }}          # Use lowercase for environment variables
-          username: ${{ secrets.USER }}      # Use lowercase for environment variables
-          key: ${{ secrets.PRIVATE_KEY }}    # Use lowercase for environment variables
           source: "public/*,docker-compose.yml"
           target: "/home/student04/site/html"
           strip_components: 2                 # this is important
