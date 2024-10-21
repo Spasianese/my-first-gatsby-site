@@ -9,7 +9,6 @@ jobs:
   build-and-deploy:
     name: Build and deploy Gatsby site
     runs-on: ubuntu-latest
-    environment: main
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2.3.1
@@ -33,11 +32,10 @@ jobs:
 
       - name: Copy files via SCP
         uses: appleboy/scp-action@master
-        env:
+        with:
           host: ${{ secrets.HOST }}         
           username: ${{ secrets.USER }}     
           key: ${{ secrets.PRIVATE_KEY }} 
-        with:
           source: "public/*,docker-compose.yml"
           target: "site/html"
           strip_components: 2
