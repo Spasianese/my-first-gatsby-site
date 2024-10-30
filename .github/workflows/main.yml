@@ -37,7 +37,7 @@ jobs:
           username: ${{ secrets.USER }}     
           key: ${{ secrets.PRIVATE_KEY }} 
           source: "public/**,docker-compose.yml"
-          target: "site/html"
+          target: "site/newBranch"
           strip_components: 2
 
       - name: Finalize Deployment
