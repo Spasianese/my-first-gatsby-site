@@ -10,6 +10,24 @@ exports.createPages = async ({ graphql, actions }) => {
     `
     query {
       Drupal {
+      nodeArticles(first: 10) {
+      edges {
+        node {
+          title
+          author {
+            displayName
+          }
+          body {
+            value
+          }
+          mediaImage {
+            mediaImage {
+              url
+            }
+          }
+        }
+      }
+    }
       nodeRecipes(first: 10) {
         edges {
           node {
@@ -52,5 +70,17 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   }
-  );
+  )
+
+  const articleTemplate = path.resolve(`src/templates/articlePost.js`)
+  result.data.Drupal.nodeArticles.edges.forEach(({node}) => {
+    createPage({
+      path: `/article/${node.title}`,
+      component: articleTemplate,
+      context: {
+        article: node,
+      },
+    });
+  }
+  )
 }
