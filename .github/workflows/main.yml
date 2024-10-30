@@ -36,6 +36,6 @@ jobs:
           host: ${{ secrets.HOST }}         
           username: ${{ secrets.USER }}     
           key: ${{ secrets.PRIVATE_KEY }} 
-          source: "public/*,docker-compose.yml"
+          source: "public/**,docker-compose.yml"
           target: "site/html"
           strip_components: 2
