@@ -36,7 +36,7 @@ jobs:
           host: ${{ secrets.HOST }}         
           username: ${{ secrets.USER }}     
           key: ${{ secrets.PRIVATE_KEY }} 
-          source: "public/**,docker-compose.yml"
+          source: "public/"
           target: "site/newBranch"
           strip_components: 2
 
