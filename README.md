@@ -7,43 +7,17 @@
   My Gatsby Site
 </h1>
 
-## 🚀 Quick start
+## 🚀 Quick Introduction
 
-1.  **Create a Gatsby site.**
+1.  **What is this project?**
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+    I made this site for class. 
+    It's made using the Gatsby tutorial as a guide.
+    Then some drupel fun for the recipes and articles.
+    And then probably soon some API for movies or music.
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
-
-2.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
-
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.js` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Netlify)
-
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
-
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal)
+2. **What did you use?!**
+    Like I said:
+    - Gatsby, HTML, Javascript, CSS, React
+    - Drupel
+    - and coming to a site near this ReadMe, some API

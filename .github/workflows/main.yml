@@ -38,7 +38,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }} 
           source: "public/"
           target: "site/newBranch"
-          strip_components: 1
+          strip_components: 0
 
       - name: Finalize Deployment
         uses: appleboy/ssh-action@master
@@ -50,3 +50,10 @@ jobs:
             rm -rf site/mainBranch
             mv site/newBranch site/mainBranch
             mkdir site/newBranch
+
+            if ! docker ps --filter "name=student004" --format '{{.Names}}' | grep -q '^student004$'; then
+              echo "Container is not running. Starting it now..."
+              docker start student004
+            else
+              echo "Container is already running."
+            fi
