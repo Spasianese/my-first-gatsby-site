@@ -1,19 +1,20 @@
 import * as React from 'react'
 import Layout from '../components/layout'
+import ArticleComponents from '../components/articleComponents'
 
-const recipe = ({ pageContext }) => {
+const Article = ({ pageContext }) => {
   const { article } = pageContext // Access 'recipe' from context
   return (
-    <Layout pageTitle={article.title}>
-    <div>
-      <img src={article.mediaImage.mediaImage.url} alt={article.title}/>
-      <br />
-      By: {article.author.displayName}
-      <br />
-      <div dangerouslySetInnerHTML={{ __html: article.body.value}} />
-    </div>
-    </Layout>
+    <>
+    <Layout />
+    <ArticleComponents 
+      mainImgURL={article.mediaImage.mediaImage.url}
+      articleTitle={article.title}
+      articleAuthor={article.author.displayName}
+      articleBody={article.body.value}
+    />
+    </>
   )
 }
 
-export default recipe
+export default Article

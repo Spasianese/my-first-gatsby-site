@@ -1,6 +1,9 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 module.exports = {
   siteMetadata: {
     title: "What?",
@@ -8,6 +11,26 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-image",
+    {
+      resolve: "gatsby-source-tmdb",
+      options: {
+        apiKey: process.env.API_KEY,
+        sessionID: process.env.SESSION_ID,
+        endpoints: [
+          // Query the /discover/movie endpoint for 50 movies that were released in 2021
+          // Sort it by popularity and name it "Top2021Movies"
+          {
+            url: `discover/movie`,
+            searchParams: {
+              language: `en-US`,
+              sort_by: `popularity.desc`,
+              year: `2023`,
+            },
+            typeName: `Top2023Movies`,
+            countLimit: 50,
+          }]
+      }
+    },
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {

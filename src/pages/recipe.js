@@ -1,37 +1,45 @@
 import * as React from 'react'
 import Layout from '../components/layout'
+import Card from '../components/card'
 import Seo from '../components/seo'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 
 const recipePost = ({ data }) => {
     return (
-    <Layout pageTitle="Yummy Yum Recipes">
-      {
-        data.Drupal.nodeRecipes.nodes.map((node, index) => (
-          <article key={index}>
-            <h2>
-              <Link to={`/recipe/${node.title}`}>
-                {node.title}
-              </Link>
-            </h2>
-          </article>
-        ))
-      }
-    </Layout>
+    <>
+    <Layout pageTitle="Yummy Yum Recipes" />
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+        {
+          data.Drupal.nodeRecipes.nodes.map((node, index) => (
+            <Card 
+              key={node.id}
+              mainImgURL={node.mediaImage.mediaImage.url}
+              Title={node.title}
+              link={`/recipe/${node.title}`}
+            />
+          ))
+        }
+      </div>
+    </>
   )
 }
 
 export const query = graphql`
   query {
-        Drupal {
-        nodeRecipes(first: 10) {
+    Drupal {
+      nodeRecipes(first: 10) {
         nodes {
-            title
-            id
+          mediaImage {
+            mediaImage {
+              url
+            }
+          }
+          title
+          id
         }
-        }
+      }
     }
-    }
+  }
 `
 
 export const Head = () => <Seo title="Yummy Yum Recipes" />

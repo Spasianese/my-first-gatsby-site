@@ -13,7 +13,7 @@ const IndexPage = () => {
         alt="Just a mother and daughter looking at the vast emptiness of a cliff"
         src="../images/eeaao.jpg"
       />
-  </Layout>
+        </Layout>
   )
 }
 
